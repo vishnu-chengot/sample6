@@ -1,0 +1,418 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link rel="stylesheet" href="{% static 'style/calculator.css' %}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+  .modal-class1 {
+    overflow: hidden;
+    padding-right: 17px;
+  }
+
+  .modal-class2 {
+    display: block;
+  }
+</style>
+
+<body id="body">
+
+  <div class="container">
+    <div class="hed-div mt-4">
+      <h1 class="hed ">student details</h1>
+    </div>
+
+
+    <div class="mb-3 row mt-5">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Student Name:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="studentName">
+      </div>
+      <div class="gender-div mb-3 ">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Gender:</label>
+
+        <div class="form-check form-check-inline mt-4 ">
+
+          <input class="form-check-input" type="radio" name="genderName" id="inlineRadio1" value="Male">
+          <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="genderName" id="inlineRadio2" value="Female">
+          <label class="form-check-label" for="inlineRadio2">Female</label>
+        </div>
+      </div>
+      <div class="mb-3 row mt-4">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Email Id:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email">
+        </div>
+      </div>
+      <div class="mb-3 row mt-4">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Phone Number:</label>
+        <div class="col-sm-10">
+          <input type="tel" class="form-control" id="phoneNo" maxlength="10" placeholder="+91">
+
+          <div class="drop-down-div mt-4 ">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Class:</label>
+            <select name="" id="option">
+              <option value="1">&#x2166;</option>
+              <option value="2">&#x2167;</option>
+              <option value="3">&#x2168;</option>
+              <option value="4">&#x2169;</option>
+              <option value="5">&#x216A;</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-outline-light mt-4" onclick="registerStudent()">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="container_size">
+    <table class="table" id="std_table">
+      <thead>
+        <tr>
+          <th scope="col">SNO</th>
+          <th scope="col">Register Number</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Class</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+    </table>
+  </div>
+
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">student details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 row mt-5">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Student Name:</label>
+            <div class="col-sm-10">
+
+
+              <input type="text" class="form-control" id="studentNameModal">
+            </div>
+            <div class="gender-div mb-3 ">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Gender:</label>
+
+              <div class="form-check form-check-inline mt-4 ">
+
+                <input class="form-check-input" type="radio" name="genderNameModal" id="inlineRadio1" value="Male">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genderNameModal" id="inlineRadio2" value="Female">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+            </div>
+            <div class="mb-3 row mt-4">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Email Id:</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailModal">
+              </div>
+            </div>
+            <div class="mb-3 row mt-4">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Phone Number:</label>
+              <div class="col-sm-10">
+                <input type="tel" class="form-control" id="phoneNoModal" maxlength="10" placeholder="+91">
+              </div>
+              <div class="col-sm-10 mt-4">
+                <input type="text" class="form-control" id="hiddenModal" maxlength="10" hidden>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="drop-down-div mt-4 ">
+          <label for="inputPassword" class="col-sm-2 col-form-label">Class:</label>
+          <select name="code" id="option2">
+            <option value="1">&#x2166;</option>
+            <option value="2">&#x2167;</option>
+            <option value="3">&#x2168;</option>
+            <option value="4">&#x2169;</option>
+            <option value="5">&#x216A;</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveChange">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script>
+    var sno = 0;
+    var emailArray = []
+    var flag = 0
+    function registerStudent() {
+      // variable decleration
+      var studentName = document.getElementById("studentName")
+      var gender = document.getElementsByName("genderName")
+      var email = document.getElementById("email")
+      var phoneNo = document.getElementById("phoneNo")
+      var className = document.getElementById("option")
+
+      var new_row = document.createElement("tr") //new row creation
+
+      // table content creation
+      var td_sno = document.createElement("td")
+      var td_regNo = document.createElement("td")
+      var td_stdNo = document.createElement("td")
+      var td_gender = document.createElement("td")
+      var td_email = document.createElement("td")
+      var td_phoneNo = document.createElement("td")
+      var td_stdClass = document.createElement("td")
+      var td_action = document.createElement("td")
+
+      new_row.appendChild(td_sno)
+      new_row.appendChild(td_regNo)
+      new_row.appendChild(td_stdNo)
+      new_row.appendChild(td_gender)
+      new_row.appendChild(td_email)
+      new_row.appendChild(td_phoneNo)
+      new_row.appendChild(td_stdClass)
+      new_row.appendChild(td_action)
+      //  selecting main table
+      var new_tableRow = document.getElementById("std_table")
+
+      //  alert box you must write something
+      //  if (studentName.value === '') {
+      //   alert("You must write something!");
+      // } else {
+      std_table.appendChild(new_row) //appending main table with new row
+      // }
+
+
+      sno++
+      td_sno.innerHTML = sno
+      var row_no = 'row' + sno
+      new_row.setAttribute("id", row_no)
+
+      var nameLength = studentName.value
+      var uppercaseName = nameLength.toUpperCase()
+      var numberLeng = phoneNo.value
+      td_regNo.innerHTML = "REG" + uppercaseName.slice(0, 2) + numberLeng.slice(6, 10)
+      var upper_stdName = studentName.value
+      td_stdNo.innerHTML = upper_stdName.toUpperCase()
+
+      for (i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+          td_gender.innerHTML = gender[i].value
+        }
+
+      }
+
+        // unique email 
+      var email_content = email.value
+      emailArray.push(email_content)
+      for (let i = 0; i < (emailArray.length - 1); i++) {
+
+        for (let j = i + 1; j < emailArray.length; j++) {
+
+          if (emailArray[i].localeCompare(emailArray[j]) == 0) {
+            alert("email alredy exist")
+            emailArray.pop()
+            flag++
+            break
+          }
+        }
+      }
+      if (flag == 0) {
+        td_email.innerHTML = emailArray[(emailArray.length) - 1]
+
+      } else {
+        // new_td.innerHTML = ""
+        new_row.remove();
+        flag = 0
+
+      }
+      
+      // phone number adding to list
+      td_phoneNo.innerHTML = phoneNo.value
+
+      // adding class to list
+      if (className.value == 1) {
+        td_stdClass.innerHTML = "&#x2166;"
+      } else if (className.value == 2) {
+        td_stdClass.innerHTML = "&#x2167;"
+      } else if (className.value == 3) {
+        td_stdClass.innerHTML = "&#x2168;"
+      } else if (className.value == 4) {
+        td_stdClass.innerHTML = "&#x2169;"
+      } else if (className.value == 5) {
+        td_stdClass.innerHTML = "&#x216A;"
+      }
+
+
+      
+
+      td_action.innerHTML = "<button class='btn btn-outline-light btn-sm' data-bs-toggle='modal' data-bs-target='#exampleModal' onclick=Update()>Update</button><button class='btn btn-outline-light btn-sm close' onclick=remove()>delete</button>"
+      
+    //  clearing field after register
+
+      gender.value = ""
+      studentName.value = ""
+      email.value = ""
+      phoneNo.value = ""
+      if (gender[0].checked) {
+        gender[0].checked = false
+      } else {
+        gender[1].checked = false
+      }
+      // document.querySelector("#option")[0].selected="selected";
+    }
+
+    function Update() {
+      document.querySelector("body").classList.add("modal-open")
+      document.querySelector("body").classList.add("modal-class1")
+      document.querySelector("#exampleModal").classList.add("show")
+      document.querySelector("#exampleModal").classList.add("modal-class2")
+
+      var modal_name = document.getElementById("studentNameModal")
+      var genderNameModal = document.getElementsByName("genderNameModal")
+      var modal_email = document.getElementById("emailModal")
+      var modal_phone = document.getElementById("phoneNoModal")
+
+
+      var selected_row = event.target.parentNode.parentNode
+      var children = selected_row.childNodes
+
+      var hidden_id = selected_row.id
+      // var f_data = children[2].innerText
+      //  modal_name = f_data
+      modal_name.value = children[2].innerText
+      // console.log(f_data)
+
+      var genderModal = children[3].innerText
+      // console.log(genderModal)
+      var num1 = "Male"
+      var num2 = "Female"
+      if (genderModal == num1) {
+        genderNameModal[0].checked = true
+      } else if(genderModal == num2 ) {
+        genderNameModal[1].checked = true
+      }else{
+        genderNameModal[0].checked = false
+        genderNameModal[1].checked = false
+      }
+      modal_email.value = children[4].innerText
+      modal_phone.value = children[5].innerText
+      var hiddenModal_content = document.getElementById("hiddenModal")
+      hiddenModal_content.value = hidden_id
+      
+      // var classArray = ["&#x2166;","&#x2167;","&#x2168;","&#x2169;","&#x216A;"]
+      // var modal_class = document.getElementById("option2")
+      // var td_class =children[6].innerHTML
+      // if(td_class == classArray[0]){
+      //   modal_class[0].selected = "selected"
+      // }else if(td_class == classArray[1]){
+      //   modal_class[1].selected = "selected"
+      // }else if(td_class == classArray[2]){
+      //   modal_class[2].selected = "selected"
+      // }else if(td_class == classArray[3]){
+      //   modal_class[3].selected = "selected"
+      // }else if(td_class == classArray[4]){
+      //   modal_class[4].selected = "selected"
+      // }
+      
+      var main_class = document.getElementById("option")
+      var modal_class = document.getElementById("option2")
+      // var td_class =children[6].innerHTML
+      console.log(main_class.value)
+      if(main_class.value == 1){
+        modal_class[0].selected = "selected"
+      }else if(main_class.value == 2){
+        modal_class[1].selected = "selected"
+      }else if(main_class.value == 3){
+        modal_class[2].selected = "selected"
+      }else if(main_class.value == 4){
+        modal_class[3].selected = "selected"
+      }else if(main_class.value == 5){
+        modal_class[4].selected = "selected"
+      }
+    }
+
+    function remove() {
+      var selected_row = event.target.parentNode.parentNode
+      selected_row.remove()
+
+
+    }
+    document.getElementById("saveChange").addEventListener("click", function () {
+
+      var hidden_textFeild = document.getElementById("hiddenModal").value
+      console.log(hidden_textFeild)
+      var tr_change = document.getElementById(hidden_textFeild)
+
+      //  modal name change 
+      var modalChange = document.getElementById("studentNameModal").value
+      tr_change.childNodes[2].innerHTML = modalChange
+
+      //  gender modal change
+      var genderNameModal = document.getElementsByName("genderNameModal")
+      for (i = 0; i < genderNameModal.length; i++) {
+        if (genderNameModal[i].checked) {
+          tr_change.childNodes[3].innerHTML = genderNameModal[i].value
+        }
+
+      }
+      var modal_email = document.getElementById("emailModal")
+      tr_change.childNodes[4].innerHTML = modal_email.value
+
+      var modal_phone = document.getElementById("phoneNoModal")
+      tr_change.childNodes[5].innerHTML = modal_phone.value
+      
+// class name selection modal
+
+      var className2 = document.getElementById("option2")
+
+      if (className2.value == 1) {
+        tr_change.childNodes[6].innerHTML = "&#x2166;"
+      } else if (className2.value == 2) {
+        tr_change.childNodes[6].innerHTML = "&#x2167;"
+      } else if (className2.value == 3) {
+        tr_change.childNodes[6].innerHTML = "&#x2168;"
+      } else if (className2.value == 4) {
+        tr_change.childNodes[6].innerHTML = "&#x2169;"
+      } else if (className2.value == 5) {
+        tr_change.childNodes[6].innerHTML = "&#x216A;"
+      }
+
+      //  for colsing the modal dialog box
+      var close = "modal"
+      document.querySelector("#saveChange").setAttribute("data-bs-dismiss", close)
+
+
+    });
+
+  </script>
+
+</body>
+
+</html>

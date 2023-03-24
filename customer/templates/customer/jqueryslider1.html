@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            
+      <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+</head>
+<style>
+  /* #d1 {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+  /* position: fixed; */
+/* }  */
+
+  
+</style>
+<body>
+  <button id = "hide"> Hide </button>
+  <button id = "show"> Show</button> 
+    
+  <br><br>
+    
+  <div class = "target" style="width:100px;height:100px;
+          background:#0f9d58;margin:0 auto;border-radius: 100px;">
+  </div>
+
+ 
+
+ 
+  <script>
+//     const someRandom = () => Math.floor(Math.random() * 101)
+// const randomColor = () => `#${Math.floor(Math.random()*16777215).toString(16)}`
+
+// for(i = 0; i <= someRandom(); i++) {
+// $('<div></div>').appendTo('html').css({
+//   "top": someRandom() + "vw",
+//   "left": someRandom() + "vh",
+//   "background-color": randomColor()
+// });
+// }
+
+// $('h1').on("keypress",function(){
+//         $(this).css({"left": Math.random() * window.outerWidth , "top": Math.random() * window.outerHeight}).textillate();
+// });
+
+
+// var btnCount = 0;
+
+// var createButton = function(){
+//   var button = document.createElement('button');
+//   button.innerHTML = 'balloon';
+//   button.setAttribute("id", "newbtn" + btnCount);
+// var btnNumber = 'newbtn'+btnCount;
+//   button.onclick = function(){
+// document.getElementById(btnNumber).style.display = 'none';
+// };
+//   document.body.appendChild(button);
+//   btnCount++;
+// };
+
+
+
+
+// $('.container a span').live('click', function (e) {
+//     $(this).hide('explode', { "pieces":25 }, 600, function() { $(this).remove; });
+//     return false;
+// });
+
+// $(document).ready(function(){
+	
+//   $('#b1').click(function(){
+// $( "#d1" ).effect( "explode",7000,function(){
+// alert('This alert is created by using callback function once the effect is over');
+// } );
+// })
+// })
+
+
+$(document).ready(function() {
+  
+  $("#hide").click(function(){
+      $(".target").effect( "explode", {pieces: 100 }, 1000 );
+  });
+
+  $("#show").click(function(){
+      $(".target").effect( "explode", {pieces: 100}, 1000 );
+  });
+});
+
+
+
+
+
+</script>
+
+  
+</body>
+</html>

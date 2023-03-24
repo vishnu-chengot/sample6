@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+</head>
+<body>
+  <form action="" id="signupForm">
+    <input type="text"  name ="firstname" placeholder="firstname">
+    <br><br>
+    <input type="text"  name ="lastname" placeholder="lastname">
+    <br><br>
+    <input type="text"  name ="email" placeholder="email">
+    <br><br>
+    <input type="password" name="password" id="password">
+    <input type="password" name="conformpassword" id="">
+    <button>sumbit</button>
+    <script>
+      $(document).ready(function(){
+        $("#signupForm").validate({
+          rules :{
+            firstname:{
+              required:true,
+              minlength:5
+            },
+            lastname:{
+              required:true
+            },
+            email:{
+              required:true,
+              email:true 
+            },
+            conformpassword:{
+              required:true,
+              equalTo:"#password"
+            }
+          },
+          messages:{
+            firstname:{
+              required: "please enter first name",
+              minlength:"minimum 5 char"
+            },
+            lastname:"please enter first name",
+            email:{
+              required:"please enter a email",
+              email:"please enter valid email"
+            },
+            conformpassword:{
+              required:"please enter password",
+              equalTo:"password is not match"
+            }
+          }
+        })
+
+      })
+    </script>
+  </form>
+</body>
+</html>

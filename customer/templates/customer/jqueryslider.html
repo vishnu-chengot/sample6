@@ -1,0 +1,345 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">
+      </script>
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+</head>
+<style>
+  body{
+    position: relative;
+  }
+  .new-div {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    box-shadow: inset 2px 8px 2px 2px rgb(199, 75, 75);
+    opacity: 0.6;
+    background-color: red;
+    position: absolute;
+    /* border: 6px red solid; */
+    /* z-index: -1; */
+  }
+  .danger_div{
+    width: 50px;
+    height: 100px;
+    background-color: blue;
+    
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    
+  }
+  .danger_div1{
+    width: 50px;
+    height: 100px;
+    background-color: blue;
+    
+    position: absolute;
+    top: 400px;
+    left: 350px;
+    
+  }
+  .scor_div1{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: rgb(224, 203, 7);
+    box-shadow: inset 2px 8px 2px 2px rgb(88, 87, 78);
+    opacity: 0.6;
+    position: absolute;
+    top: 450px;
+    left: 250px;
+    
+  }
+  .danger_div2{
+    width: 50px;
+    height: 100px;
+    background-color: blue;
+    
+    position: absolute;
+    top: 100px;
+    left: 700px;
+    
+  }
+  .outer-div{
+    width: 100%;
+    height: 650px;
+    background-color: brown;
+    position: relative;
+  }
+  .divroute{
+    width: 100px;
+    height: 400px;
+    background-color: aliceblue;
+    position: absolute;
+    left: 20px;
+  }
+  .divroute1{
+    width: 100px;
+    height: 500px;
+    background-color: aliceblue;
+    position: absolute;
+    left: 400px;
+    top: 100px;
+  }
+  .divroute2{
+    width: 500px;
+    height: 100px;
+    background-color: aliceblue;
+    position: absolute;
+    top: 400px;
+  }
+  .divroute3{
+    width: 800px;
+    height: 100px;
+    background-color: aliceblue;
+    position: absolute;
+    top: 100px;
+    left: 400px;
+  }
+  .game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+.game-over-hed{
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+}
+.head{
+  text-align: center;
+  position: absolute;
+  top: 263px;
+  left: 581px;
+  
+}
+.show{
+  visibility: hidden;
+}
+</style>
+
+<body>
+  <div class="outer-div">
+    
+    <div class="divroute" id="divroute"></div>
+    <div class="divroute1"></div>
+    <div class="divroute2"></div>
+    <div class="divroute3"></div>
+    <div class="new-div" id="div"></div>
+  </div>
+  <div class="scor_div1" id="div5"></div>
+  <div class="danger_div " id="div2"></div>
+  <div class="danger_div1 " id="div3"></div>
+  <div class="danger_div2 " id="div4"></div>
+  <div class="head show" id="head"><h1 class="game-over-hed">Game Over!</h1></div>
+  <script>
+    // var y = document.getElementById('div').getBoundingClientRect();
+    // var x = document.getElementById('div').offsetLeft;
+    var right = 0
+    var left = 0
+    var audio = new Audio('{% static "sound/wrong.mp3" %}');
+    var audio1 = new Audio('{% static "sound/blue.mp3" %}');
+    
+     var r =screen.width
+     var s =screen.width
+     var width_div =$("#divroute").innerWidth()-20
+    console.log(width_div)
+    
+    $(document).on("keydown", function (event) {
+     
+      $("#div3").slideToggle(1000)
+
+      $("#div2").slideToggle(900)
+
+      
+      $("#div4").slideToggle(2000)
+
+      switch (event.keyCode) {
+
+        case 39:
+          left += 20
+          console.log(left)
+        //  if(width_div>left){
+          $(document).ready(function () {
+            $("#div").animate({
+              "left": left
+            }, 20)
+          })
+          // $("#div").effect( "bounce", {times:3}, 300 );
+          break;
+        case 37:
+          left -= 20
+          // console.log(left)
+          $(document).ready(function () {
+            $("#div").animate({
+              "left": left
+            }, 20)
+          })
+          // $("#div").effect( "bounce", {times:3}, 300 );
+          break;
+
+        case 38:
+          right -= 10
+          $(document).ready(function () {
+            $("#div").animate({
+              "top": right
+            }, 20)
+          })
+          // $("#div").effect( "bounce", {times:3}, 30 );
+          break;
+
+        case 40:
+          right += 10
+          $(document).ready(function () {
+            $("#div").animate({
+              "top": right
+            }, 20)
+          })
+          // $("#div").effect( "bounce", {times:3}, 30 );
+          break;
+
+        default:
+          console.log(event.keyCode)
+
+          break;
+          
+      }
+      // console.log(x)
+      // console.log(y)
+    //   var elementy = document.getElementById('div').getBoundingClientRect();
+    // var elementx = document.getElementById('div2').getBoundingClientRect();
+
+    var x1 = $("#div").offset().left;
+    var y1 =$("#div").offset().top;
+    var h1 = $("#div").outerHeight(true);
+    var w1 =$("#div").outerWidth(true);
+    var b1 = y1+h1;
+    var r1 =x1+w1;
+    var x2 = $("#div2").offset().left;
+    var y2 =$("#div2").offset().top;
+    var h2 = $("#div2").outerHeight(true);
+    var w2 =$("#div2").outerWidth(true);
+    var b2 = y2+h2;
+    var r2 =x2+w2;
+
+    var x3 = $("#div3").offset().left;
+    var y3 =$("#div3").offset().top;
+    var h3 = $("#div3").outerHeight(true);
+    var w3 =$("#div3").outerWidth(true);
+    var b3 = y3+h3;
+    var r3 =x3+w3;
+
+    var x4 = $("#div4").offset().left;
+    var y4 =$("#div4").offset().top;
+    var h4 = $("#div4").outerHeight(true);
+    var w4 =$("#div4").outerWidth(true);
+    var b4 = y4+h4;
+    var r4 =x4+w4;
+
+    var x5 = $("#div5").offset().left;
+    var y5 =$("#div5").offset().top;
+    var h5 = $("#div5").outerHeight(true);
+    var w5 =$("#div5").outerWidth(true);
+    var b5 = y5+h5;
+    var r5 =x5+w5;
+
+    if(b1<y2 || y1>b2 || r1<x2 || x1>r2){
+      console.log("hai")
+      // audio1.play()
+      $("body").removeClass("game-over")
+      $("#head").addClass("show")
+    }else{
+    //  alert("danger")
+     audio.play();
+     $("body").addClass("game-over")
+      $("#head").removeClass("show")
+
+    }
+
+    if(b1<y3 || y1>b3 || r1<x3 || x1>r3){
+      console.log("hai")
+      // audio1.play()
+      $("body").removeClass("game-over")
+      $("#head").addClass("show")
+    }else{
+    //  alert("danger")
+     audio.play();
+     $("body").addClass("game-over")
+      $("#head").removeClass("show")
+      
+      
+    }
+
+    
+    if(b1<y4 || y1>b4 || r1<x4 || x1>r4){
+      console.log("chai")
+      // audio1.play()
+      $("body").removeClass("game-over")
+      $("#head").addClass("show")
+    }else{
+    //  alert("danger")
+     audio.play();
+     $("body").addClass("game-over")
+      $("#head").removeClass("show")
+      
+    }
+
+    if(b1<y5 || y1>b5 || r1<x5 || x1>r5){
+
+    }else{
+      $("#div5").hide( "explode", {pieces: 100}, 1000 );
+      audio1.play()
+    }
+    // if(b1<y2){
+    //   console.log("v")
+    // }else if(y1>b2){
+    //   console.log("r")
+    // }else if(r1<x2){
+    //   console.log("a")
+    // }else if(x1>r2){
+    //   console.log("l")
+    // }else{
+    //   console.log("my")
+    // }
+    
+    
+    })
+    
+   
+
+  
+  
+
+    //   if(elementy.right >= elm2Rect.left &&
+    //   elementy.left <= elm2Rect.right &&
+    // elementy.bottom >= elm2Rect.top &&
+    //   elementy.top <= elm2Rect.bottom){
+    //     alert("hai")-
+    //   }
+    // if (elementy == y) {
+    //     if (elementx == x) {
+    //        alert("hai")
+    //     }
+    // }
+   
+  </script>
+
+  </div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> -->
+</body>
+
+</html>

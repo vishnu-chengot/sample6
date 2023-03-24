@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input type="email" name="" id="emailtext" style="width: 400px; height: 30px; font-size: 20px;">
+  <button type="submit" onclick="emailAdd()">sumbit</button> <br> <br>
+  <table id="table">
+    <tr>
+      <th> vaild email</th>
+    </tr>
+  </table>
+  <script>
+    //   var num = "hello "
+    //   console.log(num.length)
+    //   console.log(num.charAt(4))
+
+    //   var num1 = "vishnu"
+    //   console.log(num.concat(num1))
+    //   var regex = /^[a-zA-Z ]{2,30}$/;
+    //  console.log(num1.match(regex))
+    //  str = 'hellow world'
+    //  console.log(str.split(" "))
+    //  console.log(str.slice(2,-4))
+
+
+
+
+    //   text=" "
+    //   str = "for more information follow me"
+    //   text_list =str.split(" ")
+    //   for (let i = 0; 1 < text_list.length; i++) {
+
+    //     mylist = text_list[i].split("")
+
+    //     // text_list[i]
+    //     new_list =mylist[0][0]
+    //     new_list=new_list.toUpperCase()
+
+
+    // text= str.concat(new_list)
+    // console.log(text)
+    // }
+
+    // numbers = [1,2,3,4,10]
+    // for (let i = 0; i < numbers.length; i++) {
+    //   if(numbers[i]%2==0){
+    //     console.log(numbers[i])
+    //   }
+
+
+    // }
+    // for (item of numbers) {
+    //   console.log(item)
+    // }
+    // console.log(numbers)
+    // console.log(numbers[3])
+    // console.log(typeof(numbers))
+
+    // user ={
+    //   "name":"vishnu",
+    //   "email":"vishnu.chengot@gmail.com",
+    //   "place":"ramanattukar",
+    //   "phoneNo": 9072879546
+    // }
+    // for(item in user){
+    //   // console.log(user[item])
+    //   console.log(item+" is "+user[item])
+    // }
+
+    // // for (const key in object) {
+    // //   if (Object.hasOwnProperty.call(object, key)) {
+    // //     const element = object[key];
+
+    // //   }
+    // // }
+
+    // console.log(typeof(user))
+
+    // places = ["Ramanattukara","coimbatore","palakkad"]
+    // dish = ["dosa","idlli","chapathi"]
+    // console.log(places.toString())
+    // console.log(places.join("*"))
+    // places.pop()
+    // console.log(places)
+    // places.push("plakkad")
+    // console.log(places)
+    // places.shift()
+    // console.log(places)
+    // places.unshift("chennai")
+    // console.log(places)
+
+    // console.log(places.concat(dish))
+    // places.splice(1,2,"tvm","delhi")
+    // console.log(places)
+    // places.splice(1,2)
+    // console.log(places)
+    // places.push("plakkad")
+    // console.log(places)
+    // places.splice(1,2)
+    // console.log(places)
+    // places.splice(2,3,"tvm","delhi")
+    // console.log(places)
+    // places.sort()
+    // console.log(places)
+    // places.splice(2)
+    // console.log(places)
+    // places.splice(0)
+    // console.log(places)
+
+    // email = "vishnu.chengot@gmail"
+    // console.log(email.split("@"))
+
+    // email1="vishnu.chengot@gmil"
+    // email2="vishnu.chengot@gmil.com"
+    // console.log(email1.localeCompare(email2))
+    emailArray = []
+    count = 0
+    function emailAdd() {
+      email_content = document.getElementById("emailtext").value
+      new_table = document.getElementById("table")
+      new_td = document.createElement("td")
+      //  new_emailText = document.createTextNode(email_content)
+      //  new_td.appendChild(new_emailText)
+      new_tr = document.createElement("tr")
+      new_tr.appendChild(new_td)
+      new_table.appendChild(new_tr)
+
+
+      emailArray.push(email_content)
+      limit = emailArray.length
+      Loop1:
+      for (let i = 0; i < (emailArray.length - 1); i++) {
+
+        for (let j = i + 1; j < emailArray.length; j++) {
+
+          if (emailArray[i].localeCompare(emailArray[j]) == 0) {
+            alert("email alredy exist")
+            emailArray.pop()
+            count++
+            break
+            // new_td.innerHTML =""
+
+
+          }
+
+
+          // new_td.innerHTML = emailArray[(emailArray.length)-1]
+
+
+
+
+        }
+      }
+      //  console.log(emailArray[limit-1])
+      // console.log(emailArray[i])
+      if (count == 0) {
+        new_td.innerHTML = emailArray[(emailArray.length) - 1]
+
+      } else {
+        new_td.innerHTML = ""
+        count = 0
+
+      }
+
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>

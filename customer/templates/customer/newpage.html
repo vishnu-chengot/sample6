@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+     <!-- <link rel="stylesheet" href="{% static 'styles/stdnt.css' %}"> -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<style>
+    .main{
+    width: 70%;
+    height:500px;
+    background-color: rgb(211, 88, 201);
+    margin-left: 300px;
+    margin-right: 300px;
+}
+</style>
+<body>
+    <div class="main">
+    <h1 style="text-align:center ;">DETAILS</h1>
+    
+<!-- <form action=""> -->
+    <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label"> NAME : </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="name">
+      <span id="f-name-error"></span>
+    </div>
+  </div>
+        
+            <label for="inputPassword" class="col-sm-2 col-form-label">GENDER : </label>
+            
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male" value="Male">
+            <label class="form-check-label" for="inlineRadio1">MALE</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female" value="Female">
+            <label class="form-check-label" for="inlineRadio2">FEMALE</label>
+            <span id="f-gender-error"></span>
+          </div><br><br>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">ADDRESS : </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="address">
+              <span id="f-address-error"></span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">EMAIL : </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="email">
+              <span id="f-email-error"></span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">PHONE NUMBER : </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="phoneno">
+              <span id="f-phone-error"></span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">USERNAME : </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="username">
+              <span id="f-username-error"></span>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">PASSWORD: </label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="password">
+              <span id="f-pass-error"></span>
+            </div>
+          </div>
+
+          <button type="submit" onclick = "valdate()" class="btn btn-primary" >REGISTER</button>
+<!-- </form> -->
+          <script>
+            function valdate(){
+            var p_name = document.getElementById('name')//get value from task box
+            var gender_male = document.getElementById("male")
+            var gender_female = document.getElementById("female")
+            var address = document.getElementById('address')
+            var email = document.getElementById('email')
+            var phone = document.getElementById('phoneno')
+            var username = document.getElementById('username') 
+            var password = document.getElementById('password')
+            
+            var f_name = document.getElementById("f-name-error")
+            var f_gender = document.getElementById("f-gender-error")
+            var f_address = document.getElementById("f-address-error")
+            var f_email = document.getElementById("f-email-error")
+            var f_phone = document.getElementById("f-phone-error")
+            var f_username = document.getElementById("f-username-error")
+            var f_pass = document.getElementById("f-pass-error")
+            var regex = /^[a-zA-Z ]{2,30}$/;
+            var pattern = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+
+            
+            if(p_name.value == ""){
+            
+              p_name.style.border = "1px solid red"
+              f_name.innerHTML = "please fill name"
+              f_name.style.color = "red"
+              return false
+           }else{
+            
+            if(p_name.value.match(regex) == null){
+              p_name.style.border = "1px solid red"
+              f_name.innerHTML = "name should be in format"
+              f_name.style.color = "red"
+              return false
+            }p_name.style.border = ""
+            f_name.innerHTML = ""
+
+           }
+
+           if(gender_male.checked == false && gender_female.checked == false){
+              f_gender.innerHTML = "please provide a input"
+              f_gender.style.color = "red"
+              return false
+            } else{
+              f_gender.innerHTML = ""
+              
+            }
+          if(address.value == ""){
+            f_address.innerHTML = "please fill your address"
+            f_address.style.color="red"
+            return false
+          }else{
+            f_address.innerHTML = ""
+           
+          }
+
+          if(email.value == ""){
+            f_email.innerHTML = "please fill your email"
+            f_email.style.color = "red"
+            return false
+          }else{
+            
+            if(email.value.match(pattern)==null){
+              f_email.innerHTML = "email should be in format"
+            f_email.style.color = "red"
+            return false
+            }f_email.innerHTML = ""
+          }
+          if(phone.value == ""){
+            f_phone.innerHTML = "please enter your phone number"
+            f_phone.style.color ="red"
+            return false
+          }else{
+            f_phone.innerHTML = ""
+          }
+
+          if(username.value == ""){
+            f_username.innerHTML = "please enter your user name"
+            f_username.style.color ="red"
+            return false
+          }else{
+            f_username.innerHTML = ""
+          }
+          if(password.value == ""){
+            f_pass.innerHTML = "please enter your password"
+            f_pass.style.color ="red"
+            return false
+          }else{
+            
+            if(password.value.length <= 8){
+              f_pass.innerHTML = "password should minimum 8 char"
+              f_pass.style.color ="red"
+              return false
+            }
+            f_pass.innerHTML = ""
+
+          }
+          
+            }
+            
+           
+          </script>

@@ -1,0 +1,46 @@
+#body{
+  background-color: rgb(226, 218, 218);
+  height: 1000px;
+}
+.container{
+  margin-top: 100px;
+  background-color: rgb(154, 118, 189);
+  color: #fff;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 60px;
+}
+
+.hed-div{
+  text-align: center;
+  padding-top: 20px;
+
+}
+.hed{
+  color: rgb(235, 243, 243);
+  display: inline;
+  font-weight: bold;
+
+  
+}
+.btn{
+  width: 100px;
+  height: 50px;
+  font-size: 2rem;
+
+}
+#option{
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+}
+#std_table{
+  color: #fff;
+  font-size: 15px;
+}
+#container_size{
+  width: 1400px;
+}
+
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <input type="color" name="" id="color">
+    <input type="number" name="" id="textwidth" value="3">
+  </div>
+ 
+
+  <canvas width="500px" height="500px" style="border: 2px red solid;" id="canvas">
+   
+  </canvas>
+  <script>
+    const canvas = document.getElementById("canvas")
+    const ctx = canvas.getContext("2d")
+//     ctx.fillStyle="red"
+//     ctx.fillRect(10,10,100,100);
+//     ctx.strokeStyle="blue"
+//     ctx.strokeRect(200,10,200,200);
+//     ctx.strokeStyle="green"
+//     ctx.beginPath(100,100)
+//     ctx.moveTo(50,50)
+//     ctx.lineTo(50,50)
+//     ctx.stroke()
+// ctx.arc(100,300,20,0,Math.PI*2)
+// ctx.fill()
+// var y=10
+// var x=10
+// function animate() {
+//   ctx.fillStyle="white"
+//   ctx.fillRect(0,0,500,500)
+//  ctx.fillStyle="red"
+//   y+=10
+//   ctx.beginPath()
+//   ctx.arc(y,100,20,0,Math.PI*2)
+//   ctx.fill()
+//   setTimeout(animate,100)
+  
+// }
+
+// animate()
+// animate1()
+
+// for (let i = 0; i < 6; i++) {
+//   for (let j = 0; j < 6; j++) {
+//     ctx.fillStyle='rgb('+Math.floor(205-42.5*i)+','+Math.floor(205-42.5*j)+',80)'
+//     ctx.fillRect(25*i,25*j,50,50);
+//   // ctx.fill()
+    
+//   }
+
+  
+// }
+ctx.fillStyle="white"
+ctx.fillRect(0,0,500,500)
+ctx.fillStyle="black"
+let brushcolor ="black"
+let brushwidth = 3
+document.getElementById("color").addEventListener("change",function(){
+ brushcolor=this.value
+})
+document.getElementById("textwidth").addEventListener("change",function(){
+  brushwidth=this.value
+})
+
+
+let painting = false
+
+function paintingStart(e){
+painting = true;
+}
+
+function paintingEnd(e){
+painting = false;
+ctx.beginPath()
+}
+
+function draw(e){
+if(painting ==false) return
+let x =e.clientX
+let y=e.clientY-canvas.offsetTop
+ctx.lineWidth = brushwidth
+ctx.lineTo(x,y)
+ctx.strokeStyle = brushcolor
+ctx.stroke()
+
+}
+
+canvas.addEventListener("mousedown",paintingStart)
+canvas.addEventListener("mouseup",paintingEnd)
+canvas.addEventListener("mousemove",draw)
+
+
+
+  </script>
+</body>
+</html>

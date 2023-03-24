@@ -1,0 +1,92 @@
+body{
+  /* font-family: 'Mulish', sans-serif; */
+  font-family: 'Quicksand', sans-serif;
+  position: relative;
+}
+.color-nav{
+  background-color: #12284e;
+  
+}
+.nav-item{
+  padding: 0px 15px 0px 15px;
+  
+}
+.nav-item{
+  
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  /* font-weight: bold; */
+}
+.logo{
+  width: 200px;
+  height: 60px;
+  margin-left: 70px;
+}
+
+.btn.my-button{
+  padding: 10px 15px;
+  background-color: #FF1949;
+  color: #fff;
+  font-size: 20px;
+  font-family: 'Mulish', sans-serif;
+  
+}
+.btn.my-button:hover{
+  background-color: #173568;
+  color: #fff;
+}
+
+.main-color{
+  background-color: #12284e;
+  color: #fff;
+}
+
+.main-img{
+  width: 580px;
+  height: 500px;
+  margin-bottom: 80px;
+  margin-top: 150px;
+}
+
+.btn.button-course {
+  font-size: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  background-color: #FF1949;
+  font-family: 'Mulish', sans-serif;
+
+}
+.btn.button-course:hover{
+  background-color: #173568;
+  color: #fff;
+  border: none;
+}
+.main-heading{
+  font-size: 32px;
+  line-height: 1.3;
+  margin-top: 200px;
+  font-family: 'Quicksand', sans-serif;
+  /* font-weight:bold; */
+}
+.main-discription{
+  line-height: 2;
+  color: rgb(172, 169, 169);
+  font-size: 20px;
+
+}
+.oray-color{
+  background-color: #FF1949;
+  position: absolute;
+  bottom: -72px;
+}
+.oray-img{
+  width: 500px;
+  height: 500px;
+}
+.oray-heading{
+  color: #fff;
+  font-size: 35px;
+  font-weight: bold;
+  padding:  60px 10px ;
+  font-family: 'Mulish', sans-serif;
+}
